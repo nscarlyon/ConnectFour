@@ -1,0 +1,17 @@
+<div class="header">
+  <div class="title">Connect Four</div>
+  <div [ngClass]="connectFourGame.currentState.messageColor">
+    {{connectFourGame.currentState.message}}
+  </div>
+</div>
+<div class="connect-four-container">
+  <div *ngFor="let slot of connectFourGame.board.slots; let c = index" (click)="connectFourGame.currentState.dropDisc(c)" class="column">
+    <div *ngFor="let cell of slot.cells.slice().reverse()">
+      <div class="cell" [class.player-one-disc]="cell.state === 'player one'" [class.player-two-disc]="cell.state === 'player two'">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="reset-btn-container">
+  <button class="reset-btn" (click)="connectFourGame.resetGame()">Reset Game</button>
+</div>

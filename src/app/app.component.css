@@ -1,0 +1,77 @@
+* {
+  text-align: center;
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.header {
+  margin: 10px auto;
+}
+
+.title {
+  color: #369;
+  font-size: 50px;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.red {
+  color: red;
+}
+
+.blue {
+  color: blue;
+}
+
+.black {
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.connect-four-container {
+  height: 340px;
+  width: 600px;
+  background-color: yellow;
+  display: flex;
+  margin: auto;
+  cursor: pointer;
+}
+
+.column {
+  border: solid blue 1px;
+  height: 100%;
+  width: 15%;
+  float: left;
+  margin-left: -1px;
+}
+
+.cell {
+  height: 50px;
+  border-radius: 50%;
+  width: 50px;
+  background-color: white;
+  margin: 5px auto;
+}
+
+.player-one-disc {
+  background-color: red;
+}
+
+.player-two-disc {
+  background-color: blue;
+}
+
+.reset-btn-container {
+  margin: 10px auto;
+}
+
+.reset-btn {
+  width: 400px;
+  height: 30px;
+  border: 2px dotted blue;
+  background-color: yellow;
+  border-radius: 25px;
+  font-family: Arial;
+  font-weight: bold;
+  cursor: pointer;
+}
