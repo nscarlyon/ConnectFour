@@ -12,6 +12,7 @@ describe('connect-four-game tests', () => {
     connectFourGame.resetGame();
     expect(connectFourGame.currentState.message).toEqual("Player One's Turn");
     expect(connectFourGame.board.getCell(0, 0).state).toEqual('empty');
+    expect(connectFourGame.playerMoves.moves.length).toEqual(0);
   });
 
   it('should keep track of all player moves', () => {
