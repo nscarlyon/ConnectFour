@@ -44,6 +44,7 @@ export class ConnectFourGame {
 
   resetGame(): void {
     this.board.clearBoard();
+    this.playerMoves.moves = [];
     this.currentState = this.playerOne;
   }
 }
