@@ -1,7 +1,7 @@
 import {Command} from "./command";
 import {MoveReceiver} from "./move-receiver";
 
-export class PlayDiscCommand implements Command {
+export class RemoveDiscCommand implements Command {
   moveReceiver: MoveReceiver;
 
   constructor(moveReceiver: MoveReceiver) {
@@ -9,6 +9,6 @@ export class PlayDiscCommand implements Command {
   }
 
   execute(): void {
-    this.moveReceiver.playDisc();
+    this.moveReceiver.removeDisc();
   }
 }

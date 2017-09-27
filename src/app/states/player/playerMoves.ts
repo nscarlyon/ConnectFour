@@ -1,4 +1,5 @@
 import {PlayDiscCommand} from "./play-disc-command";
+import {RemoveDiscCommand} from "./remove-disc-command";
 
 export class PlayerMoves {
   moves: any;
@@ -7,15 +8,15 @@ export class PlayerMoves {
     this.moves = [];
   }
 
-  setMove(playDiscCommand: PlayDiscCommand): void {
-    this.moves.push(playDiscCommand);
+  setMove(playDiscCommand: PlayDiscCommand, removeDiscCommand: RemoveDiscCommand): void {
+    this.moves.push([playDiscCommand, removeDiscCommand]);
   }
 
   executeMove(): void {
-    this.moves[this.moves.length - 1].execute();
+    this.moves[this.moves.length - 1][0].execute();
   }
 
   undoMove(): void {
-    this.moves[this.moves.length - 1].undo();
+    this.moves[this.moves.length - 1][1].execute();
   }
 }
