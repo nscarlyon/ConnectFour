@@ -14,4 +14,9 @@ export class MoveReceiver {
   playDisc(): void {
     this.board.playDisc(this.columnIndex, this.currentPlayer);
   }
+
+  removeDisc(): void {
+    this.board.lastDiscPlayed.state = "empty";
+  }
+
 }

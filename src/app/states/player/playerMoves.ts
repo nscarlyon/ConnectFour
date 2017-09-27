@@ -1,12 +1,9 @@
-import {Board} from "../../shared/board";
 import {PlayDiscCommand} from "./play-disc-command";
 
 export class PlayerMoves {
-  board: Board;
-  moves: Array<PlayDiscCommand>;
+  moves: any;
 
-  constructor(board: Board) {
-    this.board = board;
+  constructor() {
     this.moves = [];
   }
 
@@ -16,5 +13,9 @@ export class PlayerMoves {
 
   executeMove(): void {
     this.moves[this.moves.length - 1].execute();
+  }
+
+  undoMove(): void {
+    this.moves[this.moves.length - 1].undo();
   }
 }

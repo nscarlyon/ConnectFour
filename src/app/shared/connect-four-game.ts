@@ -4,6 +4,7 @@ import {PlayerTwo} from "../states/player/player-two";
 import {DrawState} from "../states/draw/draw-state";
 import {PlayerOneWinState} from "../states/win/player-one-win-state";
 import {PlayerTwoWinState} from "../states/win/player-two-win-state";
+import {PlayerMoves} from "../states/player/playerMoves";
 
 export class ConnectFourGame {
   board: Board;
@@ -13,9 +14,11 @@ export class ConnectFourGame {
   playerOneWinState: State;
   playerTwoWinState: State;
   currentState: State;
+  playerMoves: PlayerMoves;
 
   constructor() {
     this.board = new Board();
+    this.playerMoves = new PlayerMoves();
     this.playerOne = new PlayerOne(this);
     this.playerTwo = new PlayerTwo(this);
     this.playerOneWinState = new PlayerOneWinState(this);

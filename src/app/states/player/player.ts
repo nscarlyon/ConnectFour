@@ -17,7 +17,7 @@ export abstract class Player {
     this.board = this.connectFourGame.board;
     this.currentPlayer = currentPlayer;
     this.winDetections = new WinDetections(this.board);
-    this.playerMoves = new PlayerMoves(this.board);
+    this.playerMoves = this.connectFourGame.playerMoves;
   }
 
   dropDisc(columnIndex: number): void {
@@ -34,6 +34,11 @@ export abstract class Player {
     if (this.winDetections.playerWon(x, y)) this.connectFourGame.setCurrentStateToWin(this.currentPlayer);
     else if (this.board.isDraw()) this.connectFourGame.setCurrentStateToDraw();
     else this.connectFourGame.setCurrentStateToOtherPlayer(this.currentPlayer);
+  }
+
+  undoMove(): void {
+    this.playerMoves.undoMove();
+    this.connectFourGame.setCurrentStateToOtherPlayer(this.currentPlayer);
   }
 
   resetGame(): void {
