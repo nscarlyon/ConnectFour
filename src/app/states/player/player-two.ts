@@ -7,8 +7,8 @@ export class PlayerTwo extends Player implements State {
 
   constructor(connectFourGame: ConnectFourGame) {
     super(connectFourGame, "player two");
-    this.messageColor = "blue";
     this.message = "Player Two's Turn";
+    this.messageColor = "blue";
   }
 
 }
