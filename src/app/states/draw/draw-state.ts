@@ -16,6 +16,9 @@ export class DrawState implements State {
     this.messageColor = "black";
   }
 
+  undoMove(): void {
+  }
+
   resetGame(): void {
     this.connectFourGame.resetGame();
   }

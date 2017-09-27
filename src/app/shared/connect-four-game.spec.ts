@@ -20,4 +20,12 @@ describe('connect-four-game tests', () => {
     connectFourGame.currentState.dropDisc(0);
     expect(connectFourGame.playerMoves.moves.length).toEqual(3);
   });
+
+  it('should be able to undo one player move', () => {
+    connectFourGame.currentState.dropDisc(0);
+    connectFourGame.currentState.dropDisc(0);
+    connectFourGame.currentState.dropDisc(0);
+    connectFourGame.currentState.undoMove();
+    expect(connectFourGame.board.getCell(0, 2).state).toEqual('empty');
+  });
 });

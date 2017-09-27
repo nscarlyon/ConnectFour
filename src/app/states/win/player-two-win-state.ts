@@ -16,6 +16,9 @@ export class PlayerTwoWinState implements State {
     this.messageColor = "black";
   }
 
+  undoMove(): void {
+  }
+
   resetGame(): void {
     this.connectFourGame.resetGame();
   }
