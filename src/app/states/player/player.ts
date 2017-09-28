@@ -4,7 +4,6 @@ import {WinDetections} from "../win/win-detections/win-detections";
 import {PlayerMoves} from "./playerMoves";
 import {MoveReceiver} from "./move-receiver";
 import {PlayDiscCommand} from "./play-disc-command";
-import {RemoveDiscCommand} from "./remove-disc-command";
 
 export abstract class Player {
   connectFourGame: ConnectFourGame;
@@ -25,8 +24,7 @@ export abstract class Player {
     if (this.board.checkForValidMove(columnIndex)) {
       let moveReceiver: MoveReceiver = new MoveReceiver(this.board, this.currentPlayer, columnIndex);
       let playDiscCommand: PlayDiscCommand = new PlayDiscCommand(moveReceiver);
-      let removeDiscCommand: RemoveDiscCommand = new RemoveDiscCommand(moveReceiver);
-      this.playerMoves.setMove(playDiscCommand, removeDiscCommand);
+      this.playerMoves.setMove(playDiscCommand);
       this.playerMoves.executeMove();
       this.setStateOfGame(columnIndex, this.board.lastDiscPlayed.y);
     }

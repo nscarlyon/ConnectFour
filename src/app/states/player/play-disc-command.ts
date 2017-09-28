@@ -13,4 +13,8 @@ export class PlayDiscCommand implements Command {
   execute(): void {
     this.moveReceiver.playDisc();
   }
+
+  undo(): void {
+    this.moveReceiver.removeDisc();
+  }
 }
