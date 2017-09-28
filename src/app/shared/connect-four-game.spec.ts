@@ -29,4 +29,11 @@ describe('connect-four-game tests', () => {
     connectFourGame.currentState.undoMove();
     expect(connectFourGame.board.getCell(0, 2).state).toEqual('empty');
   });
+
+  it('should display all moves with the most recent one first', () => {
+    connectFourGame.currentState.dropDisc(0);
+    connectFourGame.currentState.dropDisc(0);
+    expect(connectFourGame.playerMoves.moves[1][0].displayMessage).toEqual("player one plays in column 1");
+    expect(connectFourGame.playerMoves.moves[0][0].displayMessage).toEqual("player two plays in column 1");
+  });
 });

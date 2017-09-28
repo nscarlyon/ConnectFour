@@ -9,14 +9,14 @@ export class PlayerMoves {
   }
 
   setMove(playDiscCommand: PlayDiscCommand, removeDiscCommand: RemoveDiscCommand): void {
-    this.moves.push([playDiscCommand, removeDiscCommand]);
+    this.moves.unshift([playDiscCommand, removeDiscCommand]);
   }
 
   executeMove(): void {
-    this.moves[this.moves.length - 1][0].execute();
+    this.moves[0][0].execute();
   }
 
   undoMove(): void {
-    this.moves[this.moves.length - 1][1].execute();
+    this.moves[0][1].execute();
   }
 }

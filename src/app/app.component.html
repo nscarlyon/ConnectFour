@@ -16,3 +16,8 @@
   <button class="reset-btn" (click)="connectFourGame.resetGame()">Reset Game</button>
   <button class="reset-btn" (click)="connectFourGame.currentState.undoMove()">Undo Move</button>
 </div>
+<div>
+  <ul>
+    <li *ngFor="let move of connectFourGame.playerMoves.moves">{{move[0].displayMessage}}</li>
+  </ul>
+</div>
