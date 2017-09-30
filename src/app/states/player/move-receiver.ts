@@ -4,6 +4,7 @@ export class MoveReceiver {
   columnIndex: number;
   board: Board;
   currentPlayer: string;
+  previousMove: any;
 
   constructor(board: Board, currentPlayer: string, columnIndex: number) {
     this.board = board;
@@ -13,10 +14,11 @@ export class MoveReceiver {
 
   playDisc(): void {
     this.board.playDisc(this.columnIndex, this.currentPlayer);
+    this.previousMove = this.board.lastDiscPlayed;
   }
 
   removeDisc(): void {
-    this.board.lastDiscPlayed.state = "empty";
+    this.board.removeDisc(this.previousMove);
   }
 
 }

@@ -75,3 +75,23 @@
   font-weight: bold;
   cursor: pointer;
 }
+
+.undo-btn {
+  background-color: red;
+  border: 1px solid black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.past {
+  color: gray;
+}
+
+.current-move {
+  color: black;
+  font-weight: bold;
+}
+
+.undo {
+  color: red;
+}

@@ -14,10 +14,14 @@
 </div>
 <div class="reset-btn-container">
   <button class="reset-btn" (click)="connectFourGame.resetGame()">Reset Game</button>
-  <button class="reset-btn" (click)="connectFourGame.currentState.undoMove()">Undo Move</button>
 </div>
 <div>
-  <ul>
-    <li *ngFor="let move of connectFourGame.playerMoves.moves">{{move.displayMessage}}</li>
-  </ul>
+    <div *ngFor="let move of connectFourGame.playerMoves.moves; let i = index">
+      <div [class.current-move]="move.state === 'currentMove'"
+           [class.past]="move.state === 'past'"
+           [class.undo]="move.state === 'undo'">
+        {{move.displayMessage}}
+      </div>
+      <button *ngIf="move.state === 'currentMove'" class="undo-btn" (click)="connectFourGame.currentState.undoMove(i)">Undo Move</button>
+    </div>
 </div>

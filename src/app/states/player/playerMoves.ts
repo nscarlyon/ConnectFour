@@ -8,6 +8,7 @@ export class PlayerMoves {
   }
 
   setMove(playDiscCommand: PlayDiscCommand): void {
+    if (this.moves.length > 0) this.moves[0].state = "past";
     this.moves.unshift(playDiscCommand);
   }
 
@@ -15,7 +16,7 @@ export class PlayerMoves {
     this.moves[0].execute();
   }
 
-  undoMove(): void {
-    this.moves[0].undo();
+  undoMove(i: number): void {
+    this.moves[i].undo();
   }
 }

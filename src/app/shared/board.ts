@@ -40,8 +40,16 @@ export class Board {
   }
 
   playDisc(columnIndex: number, currentPlayer: string): void {
-    this.lastDiscPlayed = this.slots[columnIndex].cells.find((cell: any) => cell.state === "empty");
+    this.lastDiscPlayed = this.getTopEmptyCell(columnIndex);
     this.lastDiscPlayed.state = currentPlayer;
+  }
+
+  removeDisc(previousMove: any): void {
+    previousMove.state = "empty";
+  }
+
+  getTopEmptyCell(columnIndex: number): any {
+    return this.lastDiscPlayed = this.slots[columnIndex].cells.find((cell: any) => cell.state === "empty");
   }
 
   isDraw(): boolean {
