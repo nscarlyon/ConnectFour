@@ -83,15 +83,11 @@
   cursor: pointer;
 }
 
-.past {
+.player-moves {
   color: gray;
 }
 
 .current-move {
   color: black;
   font-weight: bold;
-}
-
-.undo {
-  color: red;
 }
