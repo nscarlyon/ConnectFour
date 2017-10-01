@@ -15,13 +15,15 @@
 <div class="reset-btn-container">
   <button class="reset-btn" (click)="connectFourGame.resetGame()">Reset Game</button>
 </div>
-<div>
-    <div *ngFor="let move of connectFourGame.playerMoves.moves; let i = index">
-      <div [class.current-move]="move.state === 'currentMove'"
-           [class.past]="move.state === 'past'"
-           [class.undo]="move.state === 'undo'">
+
+<div class="past">
+    <div *ngFor="let undoMove of connectFourGame.playerMoves.undoMoves">
+      <div>{{undoMove.displayMessage}}</div>
+    </div>
+    <div *ngFor="let move of connectFourGame.playerMoves.pastMoves">
+      <div [class.current-move]="move.state === 'currentMove'">
         {{move.displayMessage}}
       </div>
-      <button *ngIf="move.state === 'currentMove'" class="undo-btn" (click)="connectFourGame.currentState.undoMove(i)">Undo Move</button>
+      <button *ngIf="move.state === 'currentMove'" class="undo-btn" (click)="connectFourGame.currentState.undoMove()">Undo Move</button>
     </div>
 </div>

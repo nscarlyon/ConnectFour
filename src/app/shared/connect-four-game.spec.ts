@@ -12,14 +12,14 @@ describe('connect-four-game tests', () => {
     connectFourGame.resetGame();
     expect(connectFourGame.currentState.message).toEqual("Player One's Turn");
     expect(connectFourGame.board.getCell(0, 0).state).toEqual('empty');
-    expect(connectFourGame.playerMoves.moves.length).toEqual(0);
+    expect(connectFourGame.playerMoves.pastMoves.length).toEqual(0);
   });
 
-  it('should keep track of all player moves', () => {
+  it('should keep track of all player pastMoves', () => {
     connectFourGame.currentState.dropDisc(0);
     connectFourGame.currentState.dropDisc(0);
     connectFourGame.currentState.dropDisc(0);
-    expect(connectFourGame.playerMoves.moves.length).toEqual(3);
+    expect(connectFourGame.playerMoves.pastMoves.length).toEqual(3);
   });
 
   it('should be able to undo one player move', () => {
@@ -30,14 +30,14 @@ describe('connect-four-game tests', () => {
     expect(connectFourGame.board.getCell(0, 2).state).toEqual('empty');
   });
 
-  it('should display all moves with the most recent one first', () => {
+  it('should display all pastMoves with the most recent one first', () => {
     connectFourGame.currentState.dropDisc(0);
     connectFourGame.currentState.dropDisc(0);
-    expect(connectFourGame.playerMoves.moves[0].displayMessage).toEqual("player two plays in column 1");
-    expect(connectFourGame.playerMoves.moves[1].displayMessage).toEqual("player one plays in column 1");
+    expect(connectFourGame.playerMoves.pastMoves[0].displayMessage).toEqual("player two plays in column 1");
+    expect(connectFourGame.playerMoves.pastMoves[1].displayMessage).toEqual("player one plays in column 1");
   });
 
-  it('should be able to undo multiple moves', () => {
+  it('should be able to undo multiple pastMoves', () => {
     connectFourGame.currentState.dropDisc(0);
     connectFourGame.currentState.dropDisc(0);
     connectFourGame.currentState.undoMove(0);

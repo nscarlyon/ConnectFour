@@ -1,22 +1,28 @@
 import {PlayDiscCommand} from "./play-disc-command";
 
 export class PlayerMoves {
-  moves: any;
+  pastMoves: any;
+  undoMoves: any;
 
   constructor() {
-    this.moves = [];
+    this.pastMoves = [];
+    this.undoMoves = [];
   }
 
   setMove(playDiscCommand: PlayDiscCommand): void {
-    if (this.moves.length > 0) this.moves[0].state = "past";
-    this.moves.unshift(playDiscCommand);
+    if (this.pastMoves.length > 0) this.pastMoves[0].state = "past";
+    this.pastMoves.unshift(playDiscCommand);
   }
 
   executeMove(): void {
-    this.moves[0].execute();
+    this.pastMoves[0].execute();
+    this.undoMoves = [];
   }
 
-  undoMove(i: number): void {
-    this.moves[i].undo();
+  undoMove(): void {
+    this.pastMoves[0].undo();
+    this.undoMoves.unshift(this.pastMoves[0]);
+    this.pastMoves.splice(0, 1);
+    if(this.pastMoves.length > 0) this.pastMoves[0].state = "currentMove";
   }
 }
