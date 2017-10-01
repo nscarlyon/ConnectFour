@@ -1,24 +1,29 @@
 import {Command} from "./command";
-import {MoveReceiver} from "./move-receiver";
+import {Board} from "../../shared/board";
 
 export class PlayDiscCommand implements Command {
-  moveReceiver: MoveReceiver;
   displayMessage: string;
   state: string;
+  previousMove: any;
+  currentPlayer: string;
+  columnIndex: number;
 
-  constructor(moveReceiver: MoveReceiver) {
-    this.moveReceiver = moveReceiver;
-    this.displayMessage = this.moveReceiver.currentPlayer + " plays in column " + (this.moveReceiver.columnIndex + 1);
+  constructor(private board: Board, currentPlayer: string, columnIndex: number) {
+    this.currentPlayer = currentPlayer;
+    this.columnIndex = columnIndex;
+    this.displayMessage = this.currentPlayer + " plays in column " + (this.columnIndex + 1);
     this.state = "past";
   }
 
   execute(): void {
     this.state = "currentMove";
-    this.moveReceiver.playDisc();
+    this.board.playDisc(this.columnIndex, this.currentPlayer);
+    this.previousMove = this.board.lastDiscPlayed;
+
   }
 
   undo(): void {
     this.state = "undo";
-    this.moveReceiver.removeDisc();
+    this.board.removeDisc(this.previousMove);
   }
 }

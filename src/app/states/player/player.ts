@@ -2,7 +2,6 @@ import {ConnectFourGame} from "../../shared/connect-four-game";
 import {Board} from "../../shared/board";
 import {WinDetections} from "../win/win-detections/win-detections";
 import {PlayerMoves} from "./playerMoves";
-import {MoveReceiver} from "./move-receiver";
 import {PlayDiscCommand} from "./play-disc-command";
 
 export abstract class Player {
@@ -22,8 +21,7 @@ export abstract class Player {
 
   dropDisc(columnIndex: number): void {
     if (this.board.checkForValidMove(columnIndex)) {
-      let moveReceiver: MoveReceiver = new MoveReceiver(this.board, this.currentPlayer, columnIndex);
-      let playDiscCommand: PlayDiscCommand = new PlayDiscCommand(moveReceiver);
+      let playDiscCommand: PlayDiscCommand = new PlayDiscCommand(this.board, this.currentPlayer, columnIndex);
       this.playerMoves.setMove(playDiscCommand);
       this.playerMoves.executeMove();
       this.setStateOfGame(columnIndex, this.board.lastDiscPlayed.y);
