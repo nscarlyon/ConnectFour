@@ -27,7 +27,7 @@ describe('connect-four-game tests', () => {
     connectFourGame.currentState.dropDisc(0);
     connectFourGame.currentState.dropDisc(0);
     connectFourGame.currentState.dropDisc(0);
-    connectFourGame.currentState.undoMove(0);
+    connectFourGame.currentState.undoMove();
     expect(connectFourGame.board.getCell(0, 2).state).toEqual('empty');
   });
 
@@ -41,8 +41,8 @@ describe('connect-four-game tests', () => {
   it('should be able to undo multiple pastMoves', () => {
     connectFourGame.currentState.dropDisc(0);
     connectFourGame.currentState.dropDisc(0);
-    connectFourGame.currentState.undoMove(0);
-    connectFourGame.currentState.undoMove(1);
+    connectFourGame.currentState.undoMove();
+    connectFourGame.currentState.undoMove();
     expect(connectFourGame.board.getCell(0, 0).state).toEqual('empty');
     expect(connectFourGame.board.getCell(0, 1).state).toEqual('empty');
   });
@@ -50,8 +50,8 @@ describe('connect-four-game tests', () => {
   it('should still be able to drop discs after undo', () => {
     connectFourGame.currentState.dropDisc(0);
     connectFourGame.currentState.dropDisc(0);
-    connectFourGame.currentState.undoMove(0);
-    connectFourGame.currentState.undoMove(1);
+    connectFourGame.currentState.undoMove();
+    connectFourGame.currentState.undoMove();
     connectFourGame.currentState.dropDisc(1);
     expect(connectFourGame.board.getCell(1, 0).state).toEqual("player one");
   });
@@ -59,15 +59,15 @@ describe('connect-four-game tests', () => {
   it('should keep track of current move after undo', () => {
     connectFourGame.currentState.dropDisc(0);
     connectFourGame.currentState.dropDisc(0);
-    connectFourGame.currentState.undoMove(0);
+    connectFourGame.currentState.undoMove();
     expect(connectFourGame.playerMoves.pastMoves[0].state).toEqual("currentMove");
   });
 
   it('should clear undo moves after executing a move', () => {
     connectFourGame.currentState.dropDisc(0);
     connectFourGame.currentState.dropDisc(0);
-    connectFourGame.currentState.undoMove(0);
-    connectFourGame.currentState.undoMove(0);
+    connectFourGame.currentState.undoMove();
+    connectFourGame.currentState.undoMove();
     connectFourGame.currentState.dropDisc(0);
     expect(connectFourGame.playerMoves.undoMoves.length).toEqual(0);
   });
