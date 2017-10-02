@@ -39,6 +39,11 @@ export abstract class Player {
     this.connectFourGame.setCurrentStateToOtherPlayer(this.currentPlayer);
   }
 
+
+  redoMove(): void {
+    this.playerMoves.redoMove();
+  }
+
   resetGame(): void {
     this.connectFourGame.resetGame();
   }

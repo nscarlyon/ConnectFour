@@ -3,5 +3,6 @@ interface State {
   messageColor: string;
   dropDisc(columnIndex?: number): void;
   undoMove(): void;
+  redoMove(): void;
   resetGame(): void;
 }

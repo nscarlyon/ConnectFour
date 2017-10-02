@@ -19,6 +19,9 @@ export class PlayerOneWinState implements State {
   undoMove(): void {
   }
 
+  redoMove(): void {
+  }
+
   resetGame(): void {
     this.connectFourGame.resetGame();
   }

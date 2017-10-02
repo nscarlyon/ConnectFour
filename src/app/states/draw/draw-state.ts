@@ -19,6 +19,9 @@ export class DrawState implements State {
   undoMove(): void {
   }
 
+  redoMove(): void {
+  }
+
   resetGame(): void {
     this.connectFourGame.resetGame();
   }

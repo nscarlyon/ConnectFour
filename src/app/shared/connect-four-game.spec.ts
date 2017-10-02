@@ -71,4 +71,13 @@ describe('connect-four-game tests', () => {
     connectFourGame.currentState.dropDisc(0);
     expect(connectFourGame.playerMoves.undoMoves.length).toEqual(0);
   });
+
+
+  it('should redo one move', () => {
+    connectFourGame.currentState.dropDisc(0);
+    connectFourGame.currentState.dropDisc(0);
+    connectFourGame.currentState.undoMove();
+    connectFourGame.currentState.redoMove();
+    expect(connectFourGame.board.getCell(0, 1).state).toEqual("player two");
+  });
 });

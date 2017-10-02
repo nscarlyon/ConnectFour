@@ -26,4 +26,9 @@ export class PlayDiscCommand implements Command {
     this.state = "undo";
     this.board.removeDisc(this.previousMove);
   }
+
+  redo(): void {
+    this.state = "currentMove";
+    this.board.replayDisc(this.currentPlayer);
+  }
 }
