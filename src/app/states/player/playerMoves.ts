@@ -23,7 +23,7 @@ export class PlayerMoves {
 
   undoMove(): void {
     this.pastMoves[0].undo();
-    this.undoMoves.unshift(this.pastMoves[0]);
+    this.undoMoves.push(this.pastMoves[0]);
     this.pastMoves.splice(0, 1);
     if(this.pastMoves.length > 0) this.pastMoves[0].state = "currentMove";
   }

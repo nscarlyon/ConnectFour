@@ -56,6 +56,19 @@ describe('connect-four-game tests', () => {
     expect(connectFourGame.board.getCell(1, 0).state).toEqual("player one");
   });
 
+  it('should display undo moves in order', () => {
+    connectFourGame.currentState.dropDisc(0);
+    connectFourGame.currentState.dropDisc(0);
+    connectFourGame.currentState.dropDisc(0);
+    connectFourGame.currentState.dropDisc(0);
+    connectFourGame.currentState.undoMove();
+    connectFourGame.currentState.undoMove();
+    connectFourGame.currentState.undoMove();
+    expect(connectFourGame.playerMoves.undoMoves[0].displayMessage).toEqual("player two plays in column 1");
+    expect(connectFourGame.playerMoves.undoMoves[1].displayMessage).toEqual("player one plays in column 1");
+    expect(connectFourGame.playerMoves.undoMoves[2].displayMessage).toEqual("player two plays in column 1");
+  });
+
   it('should keep track of current move after undo', () => {
     connectFourGame.currentState.dropDisc(0);
     connectFourGame.currentState.dropDisc(0);
