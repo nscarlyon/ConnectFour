@@ -28,20 +28,20 @@ export abstract class Player {
     }
   }
 
-  setStateOfGame(x: number, y: number): void {
-    if (this.winDetections.playerWon(x, y)) this.connectFourGame.setCurrentStateToWin(this.currentPlayer);
-    else if (this.board.isDraw()) this.connectFourGame.setCurrentStateToDraw();
-    else this.connectFourGame.setCurrentStateToOtherPlayer(this.currentPlayer);
-  }
-
   undoMove(): void {
     this.playerMoves.undoMove();
     this.connectFourGame.setCurrentStateToOtherPlayer(this.currentPlayer);
   }
 
-
   redoMove(): void {
     this.playerMoves.redoMove();
+    this.connectFourGame.setCurrentStateToOtherPlayer(this.currentPlayer);
+  }
+
+  setStateOfGame(x: number, y: number): void {
+    if (this.winDetections.playerWon(x, y)) this.connectFourGame.setCurrentStateToWin(this.currentPlayer);
+    else if (this.board.isDraw()) this.connectFourGame.setCurrentStateToDraw();
+    else this.connectFourGame.setCurrentStateToOtherPlayer(this.currentPlayer);
   }
 
   resetGame(): void {
