@@ -29,6 +29,6 @@ export class PlayDiscCommand implements Command {
 
   redo(): void {
     this.state = "currentMove";
-    this.board.replayDisc(this.currentPlayer);
+    this.board.replayDisc(this.previousMove, this.currentPlayer);
   }
 }

@@ -85,12 +85,24 @@ describe('connect-four-game tests', () => {
     expect(connectFourGame.playerMoves.undoMoves.length).toEqual(0);
   });
 
-
   it('should redo one move', () => {
     connectFourGame.currentState.dropDisc(0);
     connectFourGame.currentState.dropDisc(0);
     connectFourGame.currentState.undoMove();
     connectFourGame.currentState.redoMove();
     expect(connectFourGame.board.getCell(0, 1).state).toEqual("player two");
+  });
+
+
+  it('should redo multiple moves', () => {
+    connectFourGame.currentState.dropDisc(0);
+    connectFourGame.currentState.dropDisc(0);
+    connectFourGame.currentState.dropDisc(0);
+    connectFourGame.currentState.undoMove();
+    connectFourGame.currentState.undoMove();
+    connectFourGame.currentState.redoMove();
+    connectFourGame.currentState.redoMove();
+    expect(connectFourGame.board.getCell(0, 1).state).toEqual("player two");
+    expect(connectFourGame.board.getCell(0, 2).state).toEqual("player one");
   });
 });

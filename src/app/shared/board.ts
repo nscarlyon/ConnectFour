@@ -48,8 +48,8 @@ export class Board {
     previousMove.state = "empty";
   }
 
-  replayDisc(currentPlayer: string): void {
-    this.lastDiscPlayed.state = currentPlayer;
+  replayDisc(previousMove: any, currentPlayer: string): void {
+    previousMove.state = currentPlayer;
   }
 
   getTopEmptyCell(columnIndex: number): any {

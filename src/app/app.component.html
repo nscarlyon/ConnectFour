@@ -18,13 +18,23 @@
 
 <div class="player-moves">
     <div *ngFor="let undoMove of connectFourGame.playerMoves.undoMoves; let i = index">
-      <div>{{undoMove.displayMessage}}</div>
-      <button *ngIf="i == connectFourGame.playerMoves.undoMoves.length - 1" (click)="connectFourGame.currentState.redoMove()">Redo Move</button>
+      <div>
+        {{undoMove.displayMessage}}
+        <button *ngIf="i == connectFourGame.playerMoves.undoMoves.length - 1" (click)="connectFourGame.currentState.redoMove()">Redo Move</button>
+      </div>
     </div>
+
+  <div *ngFor="let redoMove of connectFourGame.playerMoves.redoMoves; let i = index">
+    <div [class.current-move]="redoMove.state === 'currentMove'">
+      {{redoMove.displayMessage}}
+      <button *ngIf="redoMove.state == 'currentMove'" class="undo-btn" (click)="connectFourGame.currentState.undoMove()">Undo Move</button>
+    </div>
+  </div>
+
     <div *ngFor="let move of connectFourGame.playerMoves.pastMoves">
       <div [class.current-move]="move.state === 'currentMove'">
         {{move.displayMessage}}
+        <button *ngIf="move.state === 'currentMove'" class="undo-btn" (click)="connectFourGame.currentState.undoMove()">Undo Move</button>
       </div>
-      <button *ngIf="move.state === 'currentMove'" class="undo-btn" (click)="connectFourGame.currentState.undoMove()">Undo Move</button>
     </div>
 </div>
