@@ -12,14 +12,13 @@ export class PlayDiscCommand implements Command {
     this.currentPlayer = currentPlayer;
     this.columnIndex = columnIndex;
     this.displayMessage = this.currentPlayer + " plays in column " + (this.columnIndex + 1);
-    this.state = "past";
+    this.state = "";
   }
 
   execute(): void {
     this.state = "currentMove";
     this.board.playDisc(this.columnIndex, this.currentPlayer);
     this.previousMove = this.board.lastDiscPlayed;
-
   }
 
   undo(): void {
