@@ -93,7 +93,6 @@ describe('connect-four-game tests', () => {
     expect(connectFourGame.board.getCell(0, 1).state).toEqual("player two");
   });
 
-
   it('should redo multiple moves', () => {
     connectFourGame.currentState.dropDisc(0);
     connectFourGame.currentState.dropDisc(0);
@@ -104,5 +103,42 @@ describe('connect-four-game tests', () => {
     connectFourGame.currentState.redoMove();
     expect(connectFourGame.board.getCell(0, 1).state).toEqual("player two");
     expect(connectFourGame.board.getCell(0, 2).state).toEqual("player one");
+  });
+
+  it('should redo an undo', () => {
+    connectFourGame.currentState.dropDisc(0);
+    connectFourGame.currentState.undoMove();
+    connectFourGame.currentState.redoMove();
+    expect(connectFourGame.board.getCell(0, 0).state).toEqual("player one");
+  });
+
+  it('should redo multiple undos', () => {
+    connectFourGame.currentState.dropDisc(0);
+    connectFourGame.currentState.dropDisc(0);
+    connectFourGame.currentState.undoMove();
+    connectFourGame.currentState.undoMove();
+    connectFourGame.currentState.redoMove();
+    connectFourGame.currentState.redoMove();
+    expect(connectFourGame.board.getCell(0, 0).state).toEqual("player one");
+    expect(connectFourGame.board.getCell(0, 1).state).toEqual("player two");
+  });
+
+  it('should undo a redo', () => {
+    connectFourGame.currentState.dropDisc(0);
+    connectFourGame.currentState.undoMove();
+    connectFourGame.currentState.redoMove();
+    connectFourGame.currentState.undoMove();
+    expect(connectFourGame.board.getCell(0, 0).state).toEqual("empty");
+  });
+
+  it('should undo multiple redos', () => {
+    connectFourGame.currentState.dropDisc(0);
+    connectFourGame.currentState.dropDisc(0);
+    connectFourGame.currentState.undoMove();
+    connectFourGame.currentState.undoMove();
+    connectFourGame.currentState.redoMove();
+    connectFourGame.currentState.redoMove();
+    expect(connectFourGame.board.getCell(0, 0).state).toEqual("player one");
+    expect(connectFourGame.board.getCell(0, 1).state).toEqual("player two");
   });
 });
