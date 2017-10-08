@@ -83,6 +83,13 @@
   cursor: pointer;
 }
 
+.redo-btn {
+  background-color: green;
+  border: 1px solid black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .player-moves {
   color: gray;
 }
