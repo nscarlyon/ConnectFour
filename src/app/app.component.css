@@ -1,10 +1,10 @@
 * {
-  text-align: center;
   font-weight: bold;
   font-size: x-large;
 }
 
 .header {
+  text-align: center;
   margin: 10px auto;
 }
 
@@ -28,13 +28,14 @@
   font-size: x-large;
 }
 
-.connect-four-container {
+.connect-four-game {
+  float: right;
   height: 340px;
   width: 600px;
   background-color: yellow;
   display: flex;
-  margin: auto;
   cursor: pointer;
+  margin-right: 50px;
 }
 
 .column {
@@ -63,17 +64,23 @@
 
 .reset-btn-container {
   margin: 10px auto;
+  clear: both;
 }
 
 .reset-btn {
-  width: 400px;
   height: 30px;
+  width: 400px;
   border: 2px dotted blue;
   background-color: yellow;
   border-radius: 25px;
-  font-family: Arial;
   font-weight: bold;
   cursor: pointer;
+}
+
+.player-moves {
+  float: left;
+  color: gray;
+  margin-left: 50px;
 }
 
 .undo-btn {
@@ -88,10 +95,6 @@
   border: 1px solid black;
   font-weight: bold;
   cursor: pointer;
-}
-
-.player-moves {
-  color: gray;
 }
 
 .current-move {
