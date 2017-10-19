@@ -35,7 +35,8 @@ export abstract class Player {
 
   redoMove(): void {
     this.playerMoves.redoMove();
-    this.connectFourGame.setCurrentStateToOtherPlayer(this.currentPlayer);
+    let previousMove: any = this.playerMoves.undoMoves[0].previousMove;
+    this.setStateOfGame(previousMove.x, previousMove.y);
   }
 
   setStateOfGame(x: number, y: number): void {
