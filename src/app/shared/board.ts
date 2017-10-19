@@ -12,12 +12,12 @@ export class Board {
     for (let i = 0; i < 7; i++) {
       this.slots.push({
         cells: [
-          {state: "empty", y: 0},
-          {state: "empty", y: 1},
-          {state: "empty", y: 2},
-          {state: "empty", y: 3},
-          {state: "empty", y: 4},
-          {state: "empty", y: 5},
+          {state: "empty", x: i, y: 0},
+          {state: "empty", x: i, y: 1},
+          {state: "empty", x: i, y: 2},
+          {state: "empty", x: i, y: 3},
+          {state: "empty", x: i, y: 4},
+          {state: "empty", x: i, y: 5},
         ]
       });
     }
