@@ -17,6 +17,9 @@ export class DrawState implements State {
   }
 
   undoMove(): void {
+    this.message = "Draw";
+    this.connectFourGame.playerMoves.undoMove();
+    this.connectFourGame.setCurrentStateToOtherPlayer(this.connectFourGame.playerMoves.undoMoves[0].currentPlayer);
   }
 
   redoMove(): void {
