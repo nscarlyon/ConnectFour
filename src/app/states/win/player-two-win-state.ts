@@ -17,6 +17,9 @@ export class PlayerTwoWinState implements State {
   }
 
   undoMove(): void {
+    this.message = "Player Two Won";
+    this.connectFourGame.playerMoves.undoMove();
+    this.connectFourGame.setCurrentStateToOtherPlayer("player one");
   }
 
   redoMove(): void {
