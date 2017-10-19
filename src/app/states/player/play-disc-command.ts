@@ -1,7 +1,6 @@
-import {Command} from "./command";
 import {Board} from "../../shared/board";
 
-export class PlayDiscCommand implements Command {
+export class PlayDiscCommand {
   displayMessage: string;
   previousMove: any;
   currentPlayer: string;
