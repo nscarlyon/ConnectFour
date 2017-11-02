@@ -29,16 +29,18 @@ export abstract class Player {
   }
 
   undoMove(): void {
-    if(this.playerMoves.undoMoves.length > 0) {
+    if (this.playerMoves.undoMoves.length > 0) {
       this.playerMoves.undoMove();
       this.connectFourGame.setCurrentStateToOtherPlayer(this.currentPlayer);
     }
   }
 
   redoMove(): void {
-    this.playerMoves.redoMove();
-    let previousMove: any = this.playerMoves.undoMoves[0].previousMove;
-    this.setStateOfGame(previousMove.x, previousMove.y);
+    if (this.playerMoves.redoMoves.length > 0) {
+      this.playerMoves.redoMove();
+      let previousMove: any = this.playerMoves.undoMoves[0].previousMove;
+      this.setStateOfGame(previousMove.x, previousMove.y);
+    }
   }
 
   setStateOfGame(x: number, y: number): void {

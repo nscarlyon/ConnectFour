@@ -226,4 +226,10 @@ describe('connect-four-game tests', () => {
     expect(connectFourGame.board.getCell(0,0).state).toEqual("player one");
   });
 
+  it('should continue to drop discs when user clicks redo when there are no moves to redo', () => {
+    connectFourGame.currentState.redoMove();
+    connectFourGame.currentState.dropDisc(0);
+    expect(connectFourGame.board.getCell(0,0).state).toEqual("player one");
+  });
+
 });
