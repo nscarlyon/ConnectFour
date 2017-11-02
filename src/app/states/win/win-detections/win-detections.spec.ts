@@ -141,4 +141,28 @@ describe('win detections state tests', () => {
     expect(winDetections.playerWon(6, 0)).toEqual(false);
   });
 
+  it('should detect a draw', () => {
+    connectFourGame.resetGame();
+    setDraw();
+    expect(connectFourGame.currentState.message).toEqual("Draw");
+    expect(winDetections.isDraw()).toEqual(true);
+  });
+
+  function dropMany(slotIndex: number, numOfTurns: number) {
+    for (let i = 0; i < numOfTurns; i++) {
+      connectFourGame.currentState.dropDisc(slotIndex);
+    }
+  }
+
+  function setDraw(): void {
+    dropMany(0, 6);
+    dropMany(1, 6);
+    dropMany(2, 6);
+    connectFourGame.currentState.dropDisc(4);
+    dropMany(3, 6);
+    dropMany(4, 5);
+    dropMany(5, 6);
+    dropMany(6, 6);
+  }
+
 });
