@@ -19,15 +19,14 @@ export class PlayerMoves {
   }
 
   undoMove(): void {
-    this.redoMoves.push(this.undoMoves[0]);
-    this.undoMoves[0].undo();
-    this.undoMoves.splice(0, 1);
+    let moveToUndo = this.undoMoves.shift();
+    this.redoMoves.push(moveToUndo);
+    moveToUndo.undo();
   }
 
   redoMove(): void {
-    let i: number = this.redoMoves.length - 1;
-    this.undoMoves.unshift(this.redoMoves[i]);
-    this.redoMoves[i].redo();
-    this.redoMoves.splice(i, 1);
+    let moveToRedo = this.redoMoves.pop();
+    this.undoMoves.unshift(moveToRedo);
+    moveToRedo.redo();
   }
 }

@@ -4,28 +4,40 @@
     {{connectFourGame.currentState.message}}
   </div>
 </div>
+
+<div class="connect-four-container">
+  <div class="connect-four-board-container">
+    <div class="connect-four-board">
+      <div *ngFor="let slot of connectFourGame.board.slots; let c = index" (click)="connectFourGame.currentState.dropDisc(c)" class="column">
+        <div *ngFor="let cell of slot.cells.slice().reverse()">
+          <div class="cell" [class.player-one-disc]="cell.state === 'player one'" [class.player-two-disc]="cell.state === 'player two'">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reset-btn-container">
+      <button class="reset-btn" (click)="connectFourGame.resetGame()">Reset Game</button>
+    </div>
+  </div>
   <div class="player-moves">
-    <div *ngFor="let redoMove of connectFourGame.playerMoves.redoMoves; let i = index">
+    <div class="instructor-buttons">
+      <button class="undo-btn btn" (click)="connectFourGame.currentState.undoMove()">Undo Move</button>
+      <button class="redo-btn btn" (click)="connectFourGame.currentState.redoMove()">Redo Move</button>
+    </div>
+    <div *ngFor="let redoMove of connectFourGame.playerMoves.redoMoves">
       <div>
         {{redoMove.displayMessage}}
-        <button class="redo-btn" *ngIf="i == connectFourGame.playerMoves.redoMoves.length - 1" (click)="connectFourGame.currentState.redoMove()">Redo Move</button>
       </div>
     </div>
     <div *ngFor="let undoMove of connectFourGame.playerMoves.undoMoves; let i = index">
       <div [class.current-move]="i == 0">
         {{undoMove.displayMessage}}
-        <button class="undo-btn" *ngIf="i == 0" (click)="connectFourGame.currentState.undoMove()">Undo Move</button>
       </div>
     </div>
   </div>
-  <div class="connect-four-game">
-    <div *ngFor="let slot of connectFourGame.board.slots; let c = index" (click)="connectFourGame.currentState.dropDisc(c)" class="column">
-      <div *ngFor="let cell of slot.cells.slice().reverse()">
-        <div class="cell" [class.player-one-disc]="cell.state === 'player one'" [class.player-two-disc]="cell.state === 'player two'">
-        </div>
-      </div>
-    </div>
-  </div>
-<div class="reset-btn-container">
-  <button class="reset-btn" (click)="connectFourGame.resetGame()">Reset Game</button>
 </div>
+
+
+
+
+

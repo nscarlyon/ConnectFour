@@ -15,6 +15,10 @@
   margin: 5px;
 }
 
+.connect-four-container {
+  display: flex;
+}
+
 .red {
   color: red;
 }
@@ -23,19 +27,16 @@
   color: blue;
 }
 
-.black {
-  font-weight: bold;
-  font-size: x-large;
+.connect-four-board-container {
+  margin-left: 80px;
 }
 
-.connect-four-game {
-  float: right;
+.connect-four-board {
   height: 340px;
   width: 600px;
   background-color: yellow;
   display: flex;
   cursor: pointer;
-  margin-right: 50px;
 }
 
 .column {
@@ -63,8 +64,8 @@
 }
 
 .reset-btn-container {
-  margin: 10px auto;
-  clear: both;
+  margin-top: 10px;
+  text-align: center;
 }
 
 .reset-btn {
@@ -78,26 +79,33 @@
 }
 
 .player-moves {
-  float: left;
   color: gray;
-  margin-left: 50px;
-}
-
-.undo-btn {
-  background-color: red;
-  border: 1px solid black;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.redo-btn {
-  background-color: green;
-  border: 1px solid black;
-  font-weight: bold;
-  cursor: pointer;
+  width: 400px;
+  height: 470px;
+  margin-left: 20px;
+  text-align: center;
+  border: 3px dotted blue;
+  overflow: auto;
 }
 
 .current-move {
   color: black;
   font-weight: bold;
 }
+
+.btn {
+  border: 1px solid black;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.undo-btn {
+  background-color: red;
+}
+
+.redo-btn {
+  background-color: green;
+}
+
+

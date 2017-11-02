@@ -48,5 +48,4 @@ export abstract class Player {
   resetGame(): void {
     this.connectFourGame.resetGame();
   }
-
 }
