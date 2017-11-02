@@ -68,4 +68,9 @@ export class WinDetections {
       && this.board.getCell(x-1, y+1).state === this.board.getCell(x-2, y+2).state
       && this.board.getCell(x-2, y+2).state === this.board.getCell(x-3, y+3).state;
   }
+
+  isDraw(): boolean {
+    return this.board.slots.every((slot: any): boolean => {
+      return slot.cells.every((cell: any) => cell.state === "player one" || cell.state === "player two")});
+  }
 }

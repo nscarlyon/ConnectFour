@@ -40,8 +40,9 @@ export abstract class Player {
   }
 
   setStateOfGame(x: number, y: number): void {
+
     if (this.winDetections.playerWon(x, y)) this.connectFourGame.setCurrentStateToWin(this.currentPlayer);
-    else if (this.board.isDraw()) this.connectFourGame.setCurrentStateToDraw();
+    else if (this.winDetections.isDraw()) this.connectFourGame.setCurrentStateToDraw();
     else this.connectFourGame.setCurrentStateToOtherPlayer(this.currentPlayer);
   }
 

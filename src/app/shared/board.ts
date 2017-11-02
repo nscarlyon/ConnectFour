@@ -55,10 +55,4 @@ export class Board {
   getTopEmptyCell(columnIndex: number): any {
     return this.lastDiscPlayed = this.slots[columnIndex].cells.find((cell: any) => cell.state === "empty");
   }
-
-  isDraw(): boolean {
-    return this.slots.every((slot: any): boolean => {
-      return slot.cells.every((cell: any) => cell.state === "player one" || cell.state === "player two")});
-  }
-
 }
