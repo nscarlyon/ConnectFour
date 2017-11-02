@@ -220,4 +220,10 @@ describe('connect-four-game tests', () => {
     dropMany(6, 6);
   }
 
+  it('should continue to drop discs when user clicks undo when there are no moves to undo', () => {
+    connectFourGame.currentState.undoMove();
+    connectFourGame.currentState.dropDisc(0);
+    expect(connectFourGame.board.getCell(0,0).state).toEqual("player one");
+  });
+
 });

@@ -29,8 +29,10 @@ export abstract class Player {
   }
 
   undoMove(): void {
-    this.playerMoves.undoMove();
-    this.connectFourGame.setCurrentStateToOtherPlayer(this.currentPlayer);
+    if(this.playerMoves.undoMoves.length > 0) {
+      this.playerMoves.undoMove();
+      this.connectFourGame.setCurrentStateToOtherPlayer(this.currentPlayer);
+    }
   }
 
   redoMove(): void {
